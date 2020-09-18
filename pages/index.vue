@@ -4,10 +4,17 @@
       <div class="text-center"><logo /> <vuetify-logo /></div>
       <v-card>
         <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
+          <div>
+            <p>
+              <strong style="color: #00ff00"
+                >Welcome to the Nobusama's World!!!</strong
+              >
+            </p>
+            <p>The Vuetify + Nuxt.js template</p>
+          </div>
         </v-card-title>
         <v-card-text>
-          <p><nuxt-link to="/pugTest">pugTest</nuxt-link></p>
+          <p><nuxt-link to="/pugTest">pugTestPage</nuxt-link></p>
           <p>
             Vuetify is a progressive Material Design component framework for
             Vue.js. It was designed to empower developers to create amazing
