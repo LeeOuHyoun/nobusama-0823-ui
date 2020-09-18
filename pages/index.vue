@@ -6,7 +6,7 @@
         <v-card-title class="headline">
           <div>
             <p>
-              <strong style="color: #00ff00"
+              <strong style="color: #1697f6"
                 >Welcome to the Nobusama's World!!!</strong
               >
             </p>
