@@ -95,9 +95,9 @@ export default {
     VuetifyLogo,
   },
   created() {
-    const foo = { bar: 'baz' }
-    console.log(_.get(foo, 'bar'))
-    console.log(moment().format('yyyy-mm-dd'))
+    // const foo = { bar: 'baz' }
+    // console.log(_.get(foo, 'bar'))
+    // console.log(moment().format('yyyy-mm-dd'))
   },
 }
 </script>
