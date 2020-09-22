@@ -13,3 +13,25 @@ div {
     background-color: #dddfe0;
   }
 }
+
+@for $i from 1 through 20 {
+  $calc: $i * 5;
+  .w-#{$calc} {
+    width: #{$calc + '%'};
+  }
+}
+
+@for $i from 50 through 1500 {
+  .w-#{$i}-px {
+    width: #{$i + 'px'};
+  }
+  .h-#{$i}-px {
+    height: #{$i + 'px'};
+  }
+  .w-min-#{$i}-px {
+    min-width: #{$i + 'px'};
+  }
+  .h-min-#{$i}-px {
+    min-height: #{$i + 'px'};
+  }
+}
