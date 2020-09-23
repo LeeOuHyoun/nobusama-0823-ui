@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import path from 'path'
 
 export default {
   /*
@@ -37,7 +38,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/vue-inject.js'],
+  plugins: [
+    '~/plugins/vue-inject.js',
+    { src: '~/plugins/vuex-local-storage', ssr: false },
+    { src: '~/plugins/vuex-session-storage', ssr: false },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -83,5 +88,14 @@ export default {
         moment: 'moment',
       }),
     ],
+  },
+  // XXX TODO
+  resolve: {
+    extensions: ['.js', '.json', '.vue', '.scss', '.css', 'pcss'],
+    root: path.resolve(__dirname),
+    alias: {
+      '@': path.resolve(__dirname),
+      '~': path.resolve(__dirname),
+    },
   },
 }
