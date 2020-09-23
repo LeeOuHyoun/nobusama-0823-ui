@@ -1,5 +1,4 @@
 import webpack from 'webpack'
-import path from 'path'
 
 export default {
   /*
@@ -88,14 +87,5 @@ export default {
         moment: 'moment',
       }),
     ],
-  },
-  // XXX TODO
-  resolve: {
-    extensions: ['.js', '.json', '.vue', '.scss', '.css', 'pcss'],
-    root: path.resolve(__dirname),
-    alias: {
-      '@': path.resolve(__dirname),
-      '~': path.resolve(__dirname),
-    },
   },
 }

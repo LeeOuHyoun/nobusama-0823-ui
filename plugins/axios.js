@@ -4,7 +4,11 @@ export default function ({ $axios, store, route }) {
   $axios.onRequest((config) => {
     Vue.$log.debug(`$axios.onRequest`, store)
     store.dispatch('setError', null)
-    config.headers.common['Authorization'] = context.store.getters['auth/token']
+    _.set(
+      config,
+      ['headers', 'common', 'Authorization'],
+      _.get(store, ['getters', 'auth/token'])
+    )
     return config
   })
 
