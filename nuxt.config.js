@@ -1,4 +1,5 @@
 import webpack from 'webpack'
+import colors from 'vuetify/lib/util/colors'
 
 export default {
   /*
@@ -73,7 +74,19 @@ export default {
    */
   vuetify: {
     customVariables: ['~/assets/css/variables.scss'],
-    theme: {},
+    theme: {
+      themes: {
+        light: {
+          primary: colors.teal.lighten1,
+          secondary: colors.grey.darken1,
+          success: colors.green.lighten1,
+          accent: colors.grey.darken3,
+          info: colors.blue.lighten1,
+          warning: colors.amber.accent4,
+          error: colors.red.accent4,
+        },
+      },
+    },
   },
   /*
    ** Build configuration

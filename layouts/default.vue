@@ -19,15 +19,6 @@
           )
             v-list-item-content
               v-list-item-title(v-text="subItem.title")
-
-      //- v-subheader subHeader
-      //- v-list-item-group(v-model="item" color="primary")
-      //-   v-list-item(v-for="(item, i) in items" :key="i")
-      //-     v-list-item-icon
-      //-       v-icon {{ item.icon }}
-      //-     v-list-item-content
-      //-       v-list-item-title {{ item.title }}
-
     v-app-bar(fixed app)
       v-icon.menu-icon.mr-2(large @click="drawer = true") mdi-menu
       nuxt-link.d-flex.link(tag="div" to="/")
@@ -40,7 +31,7 @@
           div.top 10%だけ頂いてやる
           div.bottom nobusama
       .w-350-px.ml-2
-        v-text-field(prepend-inner-icon="mdi-magnify" hide-details="auto" outlined dense)
+        v-text-field.d-none.d-md-flex(prepend-inner-icon="mdi-magnify" hide-details="auto" outlined dense)
       v-spacer
       v-btn.mx-1(small color="primary" outlined) ログイン
       v-btn.mx-1(small color="primary") 会員登録
