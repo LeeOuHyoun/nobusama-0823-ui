@@ -15,11 +15,7 @@
         v-card(outlined)
           v-card-title Djangoの神様
           v-card-subtitle
-            v-icon(color="#ffd700" dark dense) mdi-star
-            v-icon(color="#ffd700" dark dense) mdi-star
-            v-icon(color="#ffd700" dark dense) mdi-star
-            v-icon(color="#ffd700" dark dense) mdi-star
-            v-icon(color="#ffd700" dark dense) mdi-star-half
+            v-rating(:value="3.5" color="yellow darken-3" background-color="grey lighten-3" empty-icon="$ratingFull" half-increments dense readonly)
           v-card-text ちょっと足りない、神様でした。惜しい。
           v-card-text
             v-row
@@ -51,14 +47,7 @@
       v-list(three-line)
         div(v-for="(review, i) in reviews" :key="i")
           v-subheader
-            v-rating(
-              v-model="review.score"
-              color="yellow darken-3"
-              background-color="grey lighten-3"
-              empty-icon="$ratingFull"
-              half-increments
-              readonly
-            )
+            v-rating(v-model="review.score" color="yellow darken-3" background-color="grey lighten-3" empty-icon="$ratingFull" half-increments dense readonly)
           v-list-item
             v-list-item-avatar
               v-img(:src="review.avatar")
