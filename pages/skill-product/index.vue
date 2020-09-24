@@ -46,6 +46,26 @@
             v-btn.mx-auto(color="info") 関心リストに追加
           v-card-actions
             v-btn.mx-auto(color="warning") 関心リストに追加
+    //- 評価
+    v-container
+      v-list(three-line)
+        div(v-for="(review, i) in reviews" :key="i")
+          v-subheader
+            v-rating(
+              v-model="review.score"
+              color="yellow darken-3"
+              background-color="grey lighten-3"
+              empty-icon="$ratingFull"
+              half-increments
+              readonly
+            )
+          v-list-item
+            v-list-item-avatar
+              v-img(:src="review.avatar")
+            v-list-item-content
+              v-list-item-title(v-text="'by ' + review.user")
+              v-list-item-action-text(v-text="review.text")
+          v-divider
 </template>
 <script>
 export default {
@@ -59,6 +79,32 @@ export default {
         'deep-purple accent-4',
       ],
       slides: ['First', 'Second', 'Third', 'Fourth', 'Fifth'],
+      reviews: [
+        {
+          score: 1.5,
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
+          user: 'userA',
+          text: '良かったです。',
+        },
+        {
+          score: 2,
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+          user: 'userB',
+          text: '良かったです。',
+        },
+        {
+          score: 3,
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
+          user: 'userC',
+          text: '良かったです。',
+        },
+        {
+          score: 4.5,
+          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
+          user: 'userD',
+          text: '良かったです。',
+        },
+      ],
     }
   },
   created() {},
