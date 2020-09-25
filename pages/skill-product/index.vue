@@ -50,7 +50,10 @@
             v-rating(v-model="review.score" color="yellow darken-3" background-color="grey lighten-3" empty-icon="$ratingFull" half-increments dense readonly)
           v-list-item
             v-list-item-avatar
-              v-img(:src="review.avatar")
+              template(v-if="$_.isEmpty(review.avatar)")
+                v-icon(color="primary" size="40") mdi-account-circle
+              template(v-else)
+                v-img(:src="review.avatar")
             v-list-item-content
               v-list-item-title(v-text="'by ' + review.user")
               v-list-item-action-text(v-text="review.text")
@@ -77,7 +80,7 @@ export default {
         },
         {
           score: 2,
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
+          avatar: '',
           user: 'userB',
           text: '良かったです。',
         },

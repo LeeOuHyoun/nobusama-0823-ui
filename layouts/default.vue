@@ -31,7 +31,29 @@
           div.top 10%だけ頂いてやる
           div.bottom nobusama
       .w-350-px.ml-2
-        v-text-field.d-none.d-md-flex(prepend-inner-icon="mdi-magnify" hide-details="auto" outlined dense)
+        v-text-field.d-none.d-md-flex(
+          prepend-inner-icon="mdi-chevron-down"
+          append-icon="mdi-magnify"
+          hide-details="auto"
+          outlined dense
+          v-model="searchWords"
+          @click:prepend-inner="showMenu = !showMenu"
+          @click:append="doSearch"
+        )
+        //- 検索の種別メニュー
+        v-menu(
+          transition="scale-transition"
+          :position-x="246"
+          :position-y="50"
+          v-model="showMenu"
+        )
+          v-list
+            v-list-item
+              v-list-item-title hello1
+            v-list-item
+              v-list-item-title hello2
+            v-list-item
+              v-list-item-title hello3
       v-spacer
       v-btn.mx-1(small color="primary" outlined) ログイン
       v-btn.mx-1(small color="primary") 会員登録
@@ -46,7 +68,8 @@ export default {
   data() {
     return {
       drawer: false,
-      item: 0,
+      showMenu: false,
+      searchWords: null,
       items: [
         {
           action: 'mdi-lumx',
@@ -104,6 +127,9 @@ export default {
   },
   methods: {
     onScroll() {},
+    doSearch() {
+      console.log('doSearch ===>>> ', this.searchWords)
+    },
   },
 }
 </script>
