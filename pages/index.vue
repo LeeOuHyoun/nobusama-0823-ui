@@ -6,7 +6,7 @@
       v-card-actions
         v-container(fluid)
           v-row(align-content="center" justify="start" dense)
-            v-col(cols="6" sm="4" md="2" v-for="(category, index) in categories" :key="index")
+            v-col(cols="12" sm="4" md="2" v-for="(category, index) in categories" :key="index")
               v-card(width="95%" height="200px" nuxt to="/skill-product" hover light raised)
                 v-img(
                   class="white--text align-end"

@@ -42,31 +42,60 @@
         )
         //- 検索の種別メニュー
         v-menu(
-          transition="scale-transition"
+          transition="scroll-y-transition"
           :position-x="246"
           :position-y="50"
           v-model="showMenu"
         )
           v-list
             v-list-item
-              v-list-item-title hello1
+              v-list-item-title web front end
             v-list-item
-              v-list-item-title hello2
-            v-list-item
-              v-list-item-title hello3
+              v-list-item-title web server end
       v-spacer
-      v-btn.mx-1(small color="primary" outlined) ログイン
-      v-btn.mx-1(small color="primary") 会員登録
+      .d-flex(v-if="show")
+        template(v-if="$_.isNil(this.token)")
+          v-btn.mx-1.d-none.d-md-flex(small outlined nuxt to="/login" color="primary") ログイン
+          v-btn.mx-1.d-none.d-md-flex(small color="primary") 会員登録
+        template(v-else)
+          v-menu( transition="scale-transition" )
+            template(v-slot:activator="{ on, attrs }")
+              v-btn(v-bind="attrs" v-on="on" icon)
+                v-icon(color="primary" size="40") mdi-account-circle
+            v-list
+              v-list-item
+                v-list-item-title ユーザー太郎
+              v-list-item
+                v-btn(small color="primary" @click="exhibit") 出品する
+              v-list-item
+                v-btn(small color="primary" @click="setToken(null)") ログアウト
+
+        //- モバイルメニュー
+        v-menu( transition="scale-transition" )
+          template(v-slot:activator="{ on, attrs }")
+            v-btn.d-md-none(v-bind="attrs" v-on="on" icon)
+              v-icon mdi-dots-vertical
+          v-list.d-md-none
+            template(v-if="$_.isNil(this.token)")
+              v-list-item
+                v-btn(small outlined nuxt to="/login" color="primary") ログイン
+              v-list-item
+                v-btn(small color="primary") 会員登録
+            template(v-else)
+              v-list-item
+                v-btn(small color="primary" @click="setToken(null)") ログアウト
     v-main
       nuxt
     v-footer(:absolute="true" app)
       span &copy; 2020 ~ 2020 nobusama Inc.
 </template>
-
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
+  name: 'Default',
   data() {
     return {
+      show: false,
       drawer: false,
       showMenu: false,
       searchWords: null,
@@ -113,23 +142,27 @@ export default {
       ],
     }
   },
+  computed: { ...mapGetters('auth', ['token']) },
   mounted() {
-    // XXX TODO scroll event
-    // this.$nextTick(() => {
-    //   document.addEventListener(
-    //     'scroll',
-    //     () => {
-    //       console.log('hello scroll!!')
-    //     },
-    //     { passive: true }
-    //   )
-    // })
+    this.$nextTick(() => {
+      this.show = true
+      // XXX TODO scroll event
+      // document.addEventListener(
+      //   'scroll',
+      //   () => {
+      //     console.log('hello scroll!!')
+      //   },
+      //   { passive: true }
+      // )
+    })
   },
   methods: {
+    ...mapActions('auth', ['setToken']),
     onScroll() {},
     doSearch() {
       console.log('doSearch ===>>> ', this.searchWords)
     },
+    exhibit() {},
   },
 }
 </script>

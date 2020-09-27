@@ -1,5 +1,10 @@
 import Vue from 'vue'
-export const state = () => ({ token: 'hello token!!!' })
+// XXX
+// const cookieparser = process.server ? require('cookie-parser') : undefined
+
+export const state = () => ({
+  token: null,
+})
 
 export const getters = {
   token: (state) => state.token,
