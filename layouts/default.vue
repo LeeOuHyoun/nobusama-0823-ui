@@ -62,14 +62,7 @@
             template(v-slot:activator="{ on, attrs }")
               v-btn(v-bind="attrs" v-on="on" icon)
                 v-icon(color="primary" size="40") mdi-account-circle
-            v-list
-              v-list-item
-                v-list-item-title ユーザー太郎
-              v-list-item
-                v-btn(small color="primary" @click="exhibit") 出品する
-              v-list-item
-                v-btn(small color="primary" @click="setToken(null)") ログアウト
-
+            auth-menu
         //- モバイルメニュー
         v-menu( transition="scale-transition" )
           template(v-slot:activator="{ on, attrs }")
@@ -91,8 +84,10 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
+import AuthMenu from '@/components/AuthMenu'
 export default {
   name: 'Default',
+  components: { AuthMenu },
   data() {
     return {
       show: false,
@@ -146,14 +141,6 @@ export default {
   mounted() {
     this.$nextTick(() => {
       this.show = true
-      // XXX TODO scroll event
-      // document.addEventListener(
-      //   'scroll',
-      //   () => {
-      //     console.log('hello scroll!!')
-      //   },
-      //   { passive: true }
-      // )
     })
   },
   methods: {
@@ -162,7 +149,6 @@ export default {
     doSearch() {
       console.log('doSearch ===>>> ', this.searchWords)
     },
-    exhibit() {},
   },
 }
 </script>
