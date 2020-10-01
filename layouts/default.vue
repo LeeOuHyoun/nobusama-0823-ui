@@ -64,19 +64,15 @@
                 v-icon(color="primary" size="40") mdi-account-circle
             auth-menu
         //- モバイルメニュー
-        v-menu( transition="scale-transition" )
+        v-menu( transition="scale-transition" v-if="$_.isNil(this.token)")
           template(v-slot:activator="{ on, attrs }")
             v-btn.d-md-none(v-bind="attrs" v-on="on" icon)
               v-icon mdi-dots-vertical
           v-list.d-md-none
-            template(v-if="$_.isNil(this.token)")
-              v-list-item
-                v-btn(small outlined nuxt to="/login" color="primary") ログイン
-              v-list-item
-                v-btn(small color="primary") 会員登録
-            template(v-else)
-              v-list-item
-                v-btn(small color="primary" @click="setToken(null)") ログアウト
+            v-list-item
+              v-btn(small outlined nuxt to="/login" color="primary") ログイン
+            v-list-item
+              v-btn(small color="primary") 会員登録
     v-main
       nuxt
     v-footer(:absolute="true" app)
@@ -84,7 +80,7 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex'
-import AuthMenu from '@/components/AuthMenu'
+import AuthMenu from '@/components/menu/AuthMenu'
 export default {
   name: 'Default',
   components: { AuthMenu },

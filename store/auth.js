@@ -11,6 +11,10 @@ export const getters = {
 }
 
 export const actions = {
+  logout({ commit }) {
+    commit('setToken', null)
+    this.$router.push('/')
+  },
   setToken({ commit }, payload) {
     commit('setToken', payload)
   },

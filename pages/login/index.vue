@@ -18,6 +18,7 @@
 import { mapActions } from 'vuex'
 export default {
   layout: 'login',
+  middleware: ['authenticated'],
   data() {
     return {
       email: null,
@@ -32,7 +33,7 @@ export default {
     async login() {
       // FIXME dummy token set
       await this.setToken('aBcDeFgHi123$%^7890!!')
-      this.$router.replace('/')
+      this.$router.go(-1)
     },
   },
 }

@@ -4,13 +4,14 @@
     v-list-item-group(color="primary")
       v-list-item(link)
         v-list-item-icon
-          v-icon mdi-heart-broken
-        v-list-item-content(@click="goToExhibit")
+          v-icon mdi-package-up
+        v-list-item-content(@click="$router.push('/skill-exhibit')")
           v-list-item-title 出品する
       v-list-item(link)
         v-list-item-icon
           v-icon mdi-logout
-        v-list-item-content(@click="setToken(null)")
+        //- v-list-item-content(@click="setToken(null)")
+        v-list-item-content(@click="logout")
           v-list-item-title ログアウト
 </template>
 <script>
@@ -20,8 +21,8 @@ export default {
     return {}
   },
   methods: {
-    ...mapActions('auth', ['setToken']),
-    goToExhibit() {
+    ...mapActions('auth', ['setToken', 'logout']),
+    goToSkillExhibit() {
       console.log('hello exhibit')
     },
   },
