@@ -79,7 +79,6 @@
       span &copy; 2020 ~ 2020 nobusama Inc.
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
 import AuthMenu from '@/components/menu/AuthMenu'
 export default {
   name: 'Default',
@@ -133,14 +132,17 @@ export default {
       ],
     }
   },
-  computed: { ...mapGetters('auth', ['token']) },
+  computed: {
+    token() {
+      return this.$cookies.get('token')
+    },
+  },
   mounted() {
     this.$nextTick(() => {
       this.show = true
     })
   },
   methods: {
-    ...mapActions('auth', ['setToken']),
     onScroll() {},
     doSearch() {
       console.log('doSearch ===>>> ', this.searchWords)

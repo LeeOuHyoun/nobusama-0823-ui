@@ -32,7 +32,7 @@ export default {
     ...mapActions('auth', ['setToken', 'setAuth']),
     async login() {
       // FIXME dummy token set
-      await this.setToken('aBcDeFgHi123$%^7890!!')
+      await this.$cookies.set('token', 'aBcDeFgHi123$%^7890!!', { path: '/' })
       this.$router.go(-1)
     },
   },

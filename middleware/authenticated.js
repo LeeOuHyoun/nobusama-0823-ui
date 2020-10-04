@@ -1,6 +1,6 @@
-export default function ({ store, redirect }) {
+export default function ({ app, redirect }) {
   // If the user is authenticated
-  if (_.isNil(store.getters['auth/token'])) {
+  if (app.context.app.$cookies.get('token')) {
     return redirect('/')
   }
 }

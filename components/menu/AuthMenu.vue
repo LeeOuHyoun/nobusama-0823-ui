@@ -15,13 +15,12 @@
           v-list-item-title ログアウト
 </template>
 <script>
-import { mapActions } from 'vuex'
 export default {
-  data() {
-    return {}
-  },
   methods: {
-    ...mapActions('auth', ['setToken', 'logout']),
+    logout() {
+      this.$cookies.removeAll()
+      this.$router.go({ path: this.$router.currentRoute.path, force: true })
+    },
   },
 }
 </script>
