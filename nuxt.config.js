@@ -62,6 +62,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    ['vuetify-dialog/nuxt', { property: '$dialog' }],
     ['cookie-universal-nuxt', { parseJSON: false }],
   ],
   /*
